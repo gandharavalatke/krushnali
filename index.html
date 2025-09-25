@@ -9,10 +9,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0b0f24;
+            --bg-alt: #1e293b;
+            --text: #d1d5db;
+            --accent: #a855f7;
+            --accent-2: #f59e0b;
+            --card: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Single theme only (Cosmic) */
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0b0f24; /* Dark blue background */
-            color: #d1d5db;
+            background-color: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
         }
 
@@ -21,7 +33,7 @@
         }
 
         .hero-section {
-            background: linear-gradient(180deg, #0b0f24 0%, #1e293b 100%);
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -49,17 +61,17 @@
         }
 
         .love-story-section {
-            background: linear-gradient(180deg, #1e293b 0%, #0b0f24 100%);
+            background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
             padding: 4rem 1rem;
             position: relative;
         }
 
         .love-story-card {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: var(--card);
             border-radius: 1.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--card-border);
             margin-bottom: 3rem;
             transform: scale(0.9);
             opacity: 0;
@@ -84,7 +96,7 @@
         }
 
         .pop-up-content {
-            background-color: #0b0f24;
+            background-color: var(--bg);
             padding: 2.5rem;
             border-radius: 1.5rem;
             text-align: center;
@@ -93,7 +105,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             position: relative;
             animation: bounceIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2);
-            border: 2px solid #a855f7; /* Purple border */
+            border: 2px solid var(--accent);
         }
         
         @keyframes bounceIn {
@@ -103,7 +115,7 @@
         }
 
         .pop-up-close-btn {
-            background-color: #a855f7;
+            background-color: var(--accent);
             color: white;
             padding: 0.75rem 2rem;
             border-radius: 9999px;
@@ -125,12 +137,21 @@
         }
 
         .card-title {
-            color: #fca5a5; /* Light red/pink */
+            color: #fca5a5;
             text-shadow: 0 0 10px rgba(252, 165, 165, 0.6);
         }
+
+        /* Controls removed per request */
+
+        /* Lightbox */
+        .lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 1002; }
+        .lightbox-overlay.open { display: flex; }
+        .lightbox-img { max-width: 90vw; max-height: 85vh; border-radius: 1rem; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
     </style>
 </head>
 <body class="selection:bg-purple-500 selection:text-white">
+
+    
 
     <!-- Pop-up Disclaimer -->
     <div id="disclaimer-pop-up" class="pop-up-container">
@@ -149,7 +170,7 @@
         <div class="z-10 flex flex-col items-center">
             <h1 class="font-playfair text-5xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-purple-500 mb-4 animate-pulse">Happy Birthday, Krushnali!</h1>
             <p class="font-poppins text-xl md:text-2xl text-gray-300">A tribute to our beautiful journey across time and space.</p>
-            <img id="main-image" src="/first selfie.jpg" alt="Our very first selfie." class="mt-8 rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+            <img id="main-image" src="/first selfie.jpg" alt="Our very first selfie." class="mt-8 rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300 lightboxable">
             <p class="mt-4 text-center font-playfair italic text-lg text-yellow-300">To the girl who changed my universe.</p>
         </div>
     </div>
@@ -172,10 +193,10 @@
             </div>
             <div class="lg:w-1/2 lg:pl-12 mt-8 lg:mt-0">
                 <div class="photo-gallery">
-                    <img src="/under 25 1.jpg" alt="Couple at Under 25 Summit" class="w-full h-full object-cover rounded-xl shadow-lg">
-                    <img src="/under 25 2.jpg" alt="Group photo at Under 25 Summit" class="w-full h-full object-cover rounded-xl shadow-lg">
-                    <img src="/under 25 3.jpg" alt="Another photo at the summit" class="w-full h-full object-cover rounded-xl shadow-lg">
-                    <img src="/under 25 4.jpg" alt="Couple with a friend" class="w-full h-full object-cover rounded-xl shadow-lg">
+                    <img src="/under 25 1.jpg" alt="Couple at Under 25 Summit" class="w-full h-full object-cover rounded-xl shadow-lg lightboxable">
+                    <img src="/under 25 2.jpg" alt="Group photo at Under 25 Summit" class="w-full h-full object-cover rounded-xl shadow-lg lightboxable">
+                    <img src="/under 25 3.jpg" alt="Another photo at the summit" class="w-full h-full object-cover rounded-xl shadow-lg lightboxable">
+                    <img src="/under 25 4.jpg" alt="Couple with a friend" class="w-full h-full object-cover rounded-xl shadow-lg lightboxable">
                 </div>
             </div>
         </div>
@@ -190,7 +211,7 @@
                 </p>
             </div>
             <div class="lg:w-1/2 lg:pr-12 mt-8 lg:mt-0">
-                <img src="/25 jan I Love You.jpg" alt="Screenshot of the 'I love you' text." class="w-full rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <img src="/25 jan I Love You.jpg" alt="Screenshot of the 'I love you' text." class="w-full rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 lightboxable">
             </div>
         </div>
 
@@ -204,7 +225,7 @@
                 </p>
             </div>
             <div class="lg:w-1/2 lg:pl-12 mt-8 lg:mt-0">
-                <img src="/movieticket.jpg" alt="Movie ticket booking screenshot" class="w-full rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <img src="/movieticket.jpg" alt="Movie ticket booking screenshot" class="w-full rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 lightboxable">
             </div>
         </div>
 
@@ -218,7 +239,7 @@
                 </p>
             </div>
             <div class="lg:w-1/2 lg:pr-12 mt-8 lg:mt-0">
-                <img src="/first selfie.jpg" alt="First selfie of the couple" class="w-full rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <img src="/first selfie.jpg" alt="First selfie of the couple" class="w-full rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 lightboxable">
             </div>
         </div>
         
@@ -233,8 +254,8 @@
             </div>
             <div class="lg:w-1/2 lg:pl-12 mt-8 lg:mt-0">
                 <div class="photo-gallery">
-                    <img src="/at home 1.jpg" alt="Couple at home" class="w-full h-full object-cover rounded-xl shadow-lg">
-                    <img src="/at home 2.jpg" alt="Couple with friends at home" class="w-full h-full object-cover rounded-xl shadow-lg">
+                    <img src="/at home 1.jpg" alt="Couple at home" class="w-full h-full object-cover rounded-xl shadow-lg lightboxable">
+                    <img src="/at home 2.jpg" alt="Couple with friends at home" class="w-full h-full object-cover rounded-xl shadow-lg lightboxable">
                 </div>
             </div>
         </div>
@@ -249,7 +270,7 @@
                 </p>
             </div>
             <div class="lg:w-1/2 lg:pr-12 mt-8 lg:mt-0 flex justify-center">
-                <img src="/hair band.jpg" alt="A hair tie." class="w-3/4 max-w-sm rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <img src="/hair band.jpg" alt="A hair tie." class="w-3/4 max-w-sm rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 lightboxable">
             </div>
         </div>
 
@@ -272,6 +293,24 @@
 
     </div>
 
+    <!-- Memories Section -->
+    <div class="love-story-section">
+        <h2 class="font-playfair text-center text-4xl md:text-5xl font-bold text-gray-200 mb-6">Add a Memory</h2>
+        <p class="text-center text-gray-300 mb-8">Add a title, your memory, and optionally a photo. It will show below instantly.</p>
+        <form id="memory-form" class="max-w-3xl mx-auto bg-transparent p-6 rounded-2xl" autocomplete="off">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input id="memory-title" type="text" placeholder="Memory title" class="w-full px-4 py-3 rounded-xl bg-transparent border border-[color:var(--card-border)] text-[color:var(--text)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]" required>
+                <input id="memory-photo" type="file" accept="image/*" class="w-full px-4 py-3 rounded-xl bg-transparent border border-[color:var(--card-border)] text-[color:var(--text)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]">
+            </div>
+            <textarea id="memory-text" placeholder="Write your memory..." class="w-full px-4 py-3 rounded-xl bg-transparent border border-[color:var(--card-border)] text-[color:var(--text)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)] mt-4" rows="4" required></textarea>
+            <div class="flex items-center justify-between mt-4">
+                <button id="memory-submit" type="submit" class="pop-up-close-btn">Save Memory</button>
+                <span id="memory-status" class="text-sm opacity-80"></span>
+            </div>
+        </form>
+        <div id="memories-list" class="max-w-5xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </div>
+
     <!-- Conclusion Section -->
     <div class="hero-section text-center bg-transparent pt-16 pb-16">
         <h2 class="font-playfair text-4xl md:text-5xl font-bold text-yellow-300 mb-4">Our Journey Continues...</h2>
@@ -284,12 +323,21 @@
         <p class="font-playfair italic text-xl md:text-2xl text-gray-400 mt-4">Happy Birthday once again, my love.</p>
     </div>
 
+    <div id="lightbox" class="lightbox-overlay"><img id="lightbox-img" class="lightbox-img" alt="Lightbox"></div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
         window.onload = function() {
             const disclaimerPopUp = document.getElementById('disclaimer-pop-up');
             const closePopUpBtn = document.getElementById('close-pop-up');
+            
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
 
             // Show the pop-up on page load
             disclaimerPopUp.style.display = 'flex';
@@ -297,6 +345,15 @@
             // Close the pop-up when the button is clicked
             closePopUpBtn.addEventListener('click', () => {
                 gsap.to(disclaimerPopUp, { opacity: 0, duration: 0.5, onComplete: () => disclaimerPopUp.style.display = 'none' });
+                // Celebration confetti
+                if (window.confetti) {
+                    const end = Date.now() + 1000;
+                    const colors = ['#a855f7','#f59e0b','#f472b6','#22d3ee'];
+                    (function frame() {
+                        confetti({ particleCount: 4, spread: 60, origin: { y: 0.6 }, colors });
+                        if (Date.now() < end) requestAnimationFrame(frame);
+                    })();
+                }
             });
 
             // Animate hero section elements on load
@@ -317,6 +374,154 @@
                         start: "top 80%",
                     }
                 });
+            });
+
+            // Theme and music controls removed per request
+
+            // Lightbox
+            document.querySelectorAll('.lightboxable').forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('open');
+                });
+            });
+            lightbox.addEventListener('click', () => {
+                lightbox.classList.remove('open');
+                lightboxImg.src = '';
+            });
+
+            // Memories
+            const memoryForm = document.getElementById('memory-form');
+            const memoriesList = document.getElementById('memories-list');
+            const memoryStatus = document.getElementById('memory-status');
+
+            async function renderMemories() {
+                try {
+                    const res = await fetch('/api/memories');
+                    const data = await res.json();
+                    memoriesList.innerHTML = '';
+                    data.slice().reverse().forEach(mem => {
+                        const card = document.createElement('div');
+                        card.className = 'love-story-card p-6 opacity-100 transform-none';
+                        card.innerHTML = `
+                            <div class=\"flex items-start justify-between gap-3\">
+                              <div class=\"flex-1\">
+                                <h4 class=\"font-playfair text-2xl card-title mb-2\">${mem.title}</h4>
+                                <p class=\"text-gray-300 mb-3\">${mem.text}</p>
+                              </div>
+                              <div class=\"shrink-0 flex gap-2\">
+                                <button data-id=\"${mem.id}\" class=\"edit-btn control-btn\">Edit</button>
+                                <button data-id=\"${mem.id}\" class=\"delete-btn control-btn\">Delete</button>
+                              </div>
+                            </div>
+                            ${mem.imageUrl ? `<img src=\"${mem.imageUrl}\" alt=\"memory photo\" class=\"w-full rounded-xl shadow-lg lightboxable mt-2\">` : ''}
+                            <div class=\"text-xs opacity-60 mt-2\">${new Date(mem.createdAt).toLocaleString()}</div>
+                        `;
+                        memoriesList.appendChild(card);
+                    });
+                    document.querySelectorAll('.lightboxable').forEach(img => {
+                        img.addEventListener('click', () => {
+                            lightboxImg.src = img.src;
+                            lightbox.classList.add('open');
+                        });
+                    });
+                } catch (e) {
+                    memoryStatus.textContent = 'Unable to load memories.';
+                }
+            }
+
+            renderMemories();
+
+            if (memoryForm) {
+                memoryForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    memoryStatus.textContent = 'Saving...';
+                    const title = document.getElementById('memory-title').value.trim();
+                    const text = document.getElementById('memory-text').value.trim();
+                    const photoInput = document.getElementById('memory-photo');
+                    if (!title || !text) { memoryStatus.textContent = 'Title and memory are required.'; return; }
+                    try {
+                        const formData = new FormData();
+                        formData.append('title', title);
+                        formData.append('text', text);
+                        if (photoInput && photoInput.files && photoInput.files[0]) formData.append('photo', photoInput.files[0]);
+                        const res = await fetch('/api/memories', { method: 'POST', body: formData });
+                        if (!res.ok) {
+                            let msg = 'Failed to save.';
+                            try { const j = await res.json(); if (j && j.error) msg = j.error; } catch {}
+                            throw new Error(msg);
+                        }
+                        document.getElementById('memory-text').value = '';
+                        document.getElementById('memory-title').value = '';
+                        if (photoInput) photoInput.value = '';
+                        memoryStatus.textContent = 'Saved!';
+                        renderMemories();
+                    } catch (err) {
+                        memoryStatus.textContent = (err && err.message) ? err.message : 'Failed to save. Try again?';
+                    } finally {
+                        setTimeout(() => memoryStatus.textContent = '', 2000);
+                    }
+                });
+            }
+
+            // Modal helpers
+            function openModal(html) {
+                const overlay = document.createElement('div');
+                overlay.className = 'pop-up-container';
+                const content = document.createElement('div');
+                content.className = 'pop-up-content';
+                content.innerHTML = html;
+                overlay.appendChild(content);
+                document.body.appendChild(overlay);
+                return { overlay, content };
+            }
+
+            // Delegate edit/delete clicks
+            document.body.addEventListener('click', async (e) => {
+                const editBtn = e.target.closest('.edit-btn');
+                const delBtn = e.target.closest('.delete-btn');
+                if (editBtn) {
+                    const id = editBtn.getAttribute('data-id');
+                    const card = editBtn.closest('.love-story-card');
+                    const title = card.querySelector('h4').textContent;
+                    const text = card.querySelector('p').textContent;
+                    const { overlay, content } = openModal(`
+                        <h3 class=\"text-2xl font-bold mb-4\">Edit Memory</h3>
+                        <input id=\"edit-title\" class=\"w-full px-4 py-3 rounded-xl bg-transparent border border-[color:var(--card-border)] text-[color:var(--text)] mb-3\" value=\"${title.replace(/"/g,'&quot;')}\" />
+                        <textarea id=\"edit-text\" class=\"w-full px-4 py-3 rounded-xl bg-transparent border border-[color:var(--card-border)] text-[color:var(--text)] mb-3\" rows=\"4\">${text}</textarea>
+                        <input id=\"edit-photo\" type=\"file\" accept=\"image/*\" class=\"w-full px-4 py-3 rounded-xl bg-transparent border border-[color:var(--card-border)] text-[color:var(--text)] mb-4\" />
+                        <div class=\"flex justify-end gap-2\">
+                            <button id=\"cancel-modal\" class=\"control-btn\">Cancel</button>
+                            <button id=\"save-modal\" class=\"pop-up-close-btn\">Save</button>
+                        </div>
+                    `);
+                    content.querySelector('#cancel-modal').onclick = () => overlay.remove();
+                    content.querySelector('#save-modal').onclick = async () => {
+                        const formData = new FormData();
+                        formData.append('title', content.querySelector('#edit-title').value.trim());
+                        formData.append('text', content.querySelector('#edit-text').value.trim());
+                        const file = content.querySelector('#edit-photo').files[0];
+                        if (file) formData.append('photo', file);
+                        const res = await fetch(`/api/memories/${id}`, { method: 'PUT', body: formData });
+                        if (res.ok) { overlay.remove(); renderMemories(); }
+                    };
+                }
+                if (delBtn) {
+                    const id = delBtn.getAttribute('data-id');
+                    const { overlay, content } = openModal(`
+                        <h3 class=\"text-2xl font-bold mb-4\">Delete Memory?</h3>
+                        <p class=\"mb-4\">Are you sure you want to delete this memory? This action cannot be undone.</p>
+                        <div class=\"flex justify-end gap-2\">
+                            <button id=\"cancel-modal\" class=\"control-btn\">Cancel</button>
+                            <button id=\"confirm-delete\" class=\"pop-up-close-btn\">Delete</button>
+                        </div>
+                    `);
+                    content.querySelector('#cancel-modal').onclick = () => overlay.remove();
+                    content.querySelector('#confirm-delete').onclick = async () => {
+                        const res = await fetch(`/api/memories/${id}`, { method: 'DELETE' });
+                        if (res.ok) { overlay.remove(); renderMemories(); }
+                    };
+                }
             });
         };
     </script>
