@@ -293,7 +293,7 @@
 
     </div>
 
-    
+   
 
     <!-- Conclusion Section -->
     <div class="hero-section text-center bg-transparent pt-16 pb-16">
@@ -312,6 +312,10 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
+
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
@@ -374,9 +378,21 @@
                 lightboxImg.src = '';
             });
 
+            
+           
+            // Modal helpers
+            function openModal(html) {
+                const overlay = document.createElement('div');
+                overlay.className = 'pop-up-container';
+                const content = document.createElement('div');
+                content.className = 'pop-up-content';
+                content.innerHTML = html;
+                overlay.appendChild(content);
+                document.body.appendChild(overlay);
+                return { overlay, content };
+            }
 
+           
     </script>
 </body>
 </html>
-
-
